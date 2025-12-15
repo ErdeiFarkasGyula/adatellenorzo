@@ -46,6 +46,13 @@
                 return;
             }
 
+            const postalRegex = /^\d{4}$/;
+            if (!postalRegex.test(postal)) {
+                messageDiv.textContent = 'Az irányítószám formátuma hibás! (pl.: 1234)';
+                messageDiv.style.color = 'red';
+                return;
+            }
+
             messageDiv.textContent = 'Az adatok helyesek';
             messageDiv.style.color = 'green';
         });
