@@ -38,6 +38,13 @@
                 messageDiv.style.color = 'red';
                 return;
             }
+            
+            const phoneRegex = /^(\+36|06)\d{9}$/;
+            if (!phoneRegex.test(phone)) {
+                messageDiv.textContent = 'A telefonszám formátuma hibás! (pl.: +36301234567 vagy 06301234567)';
+                messageDiv.style.color = 'red';
+                return;
+            }
 
             messageDiv.textContent = 'Az adatok helyesek';
             messageDiv.style.color = 'green';
