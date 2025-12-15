@@ -32,6 +32,13 @@
                 return;
             }
 
+            const emailRegex = /^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                messageDiv.textContent = 'Az e-mail cím formátuma hibás! (pl.: kiss.peter@gmail.com)';
+                messageDiv.style.color = 'red';
+                return;
+            }
+
             messageDiv.textContent = 'Az adatok helyesek';
             messageDiv.style.color = 'green';
         });
