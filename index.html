@@ -10,8 +10,32 @@
 
     <input type="text" id="nameInput" placeholder="Név">
     <input type="text" id="emailInput" placeholder="Email">
-    <input type="number" id="phoneInput" placeholder="Telefonszám">
-    <input type="number" id="postalCodeInput" placeholder="Irányítószám">
+    <input type="text" id="phoneInput" placeholder="Telefonszám">
+    <input type="text" id="postalCodeInput" placeholder="Irányítószám">
+
+    <button id="validateBtn">Ellenőrzés</button>
+
+    <div id="message"></div>
+
+    <script>
+        document.getElementById('validateBtn').addEventListener('click', function() {
+            const name = document.getElementById('nameInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            const phone = document.getElementById('phoneInput').value.trim();
+            const postal = document.getElementById('postalCodeInput').value.trim();
+            const messageDiv = document.getElementById('message');
+
+            const nameRegex = /^[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+ [A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+$/;
+            if (!nameRegex.test(name)) {
+                messageDiv.textContent = 'A név formátuma hibás! (pl.: Kiss Péter)';
+                messageDiv.style.color = 'red';
+                return;
+            }
+
+            messageDiv.textContent = 'Az adatok helyesek';
+            messageDiv.style.color = 'green';
+        });
+    </script>
 
 </body>
 </html>
